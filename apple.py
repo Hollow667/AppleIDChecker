@@ -11,7 +11,6 @@ import os
 import time
 import sys
 import random as h
-import colorama as c
 from os import path as y
 # SET COLOR :
 red = c.Fore.LIGHTRED_EX
